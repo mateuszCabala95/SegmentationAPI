@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.19.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\customer_feature_analysis.xlsx" Link="Data\customer_feature_analysis.xlsx" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\product_catalog.xlsx" Link="Data\product_catalog.xlsx" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

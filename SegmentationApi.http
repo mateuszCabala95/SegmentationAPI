@@ -1,0 +1,57 @@
+@SegmentationApi_HostAddress = http://localhost:5045
+
+### All products
+GET {{SegmentationApi_HostAddress}}/api/products
+Accept: application/json
+
+### Products of one category
+GET {{SegmentationApi_HostAddress}}/api/products?category=COMPUTER_DRIVE_OR_STORAGE
+Accept: application/json
+
+### Top 2 features for a tablet
+POST {{SegmentationApi_HostAddress}}/api/recommendations
+Content-Type: application/json
+
+{
+  "gender": "Female",
+  "age": 30,
+  "income": "From25kTo49k",
+  "asin": "B07FKR6KXF",
+  "topN": 2
+}
+
+### Product from the DRIVE_OR_STORAGE sheet (category COMPUTER_DRIVE_OR_STORAGE)
+POST {{SegmentationApi_HostAddress}}/api/recommendations
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "age": 42,
+  "income": "From100kTo149k",
+  "asin": "B07CRG94G3",
+  "topN": 2
+}
+
+### Validation errors: age < 18, topN > 2
+POST {{SegmentationApi_HostAddress}}/api/recommendations
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "age": 16,
+  "income": "LessThan25k",
+  "asin": "B07CRG94G3",
+  "topN": 3
+}
+
+### Unknown ASIN
+POST {{SegmentationApi_HostAddress}}/api/recommendations
+Content-Type: application/json
+
+{
+  "gender": "Other",
+  "age": 70,
+  "income": "From150kOrMore",
+  "asin": "NOPE",
+  "topN": 1
+}
